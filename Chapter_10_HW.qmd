@@ -1,0 +1,94 @@
+---
+title: "Chapter_10_HW"
+author: "Lidan Gao"
+format: pdf
+editor: visual
+---
+
+## Homework
+
+Due: April 11, 2023
+
+1.  Input a figure using LaTeX, Markdown, HTML each from files stored on your computer.
+
+2.  Input a figure using HTML for a raw URL stored on your github repository.
+
+3.  Create a graph using ggplot2 and wrap it around LaTeX for extra options.
+
+Turn in: 1 Clean PDF, Quarto Document, ReadMe, push to github, include the github link on the PDF
+
+Here is the github link. <https://github.com/ldgao11/Chapter_10_HW.git>
+
+## Using LaTeX
+
+```{=tex}
+\begin{figure}[ht]
+            \begin{center}
+                  \includegraphics{puppy.png}
+            \end{center}
+      \caption{An Example Figure in LaTeX}
+      {\scriptsize}
+      \label{puppyleLaTeXFigure}
+\end{figure}
+```
+## Using Markdown
+
+![PuppyImage](puppy.png){width="100"}
+
+## Using HTML from Local Picture
+
+<img src="puppy.png" alt="PuppyImage" width="100"/> </img>
+
+## Using HTML from online Picture
+
+<img src="https://github.com/ldgao11/Chapter_10_HW/blob/main/puppy.png?raw=true" alt="PuppyImage" width="100"/> </img>
+
+## Using ggplot2
+
+```{r}
+
+library(ggplot2)
+data("ChickWeight")
+#View(ChickWeight)
+
+# Create plot
+
+plot <- ggplot(data = ChickWeight, aes(x = Time, y = weight)) + 
+  geom_point() + 
+   theme_bw(base_size = 15)
+
+print(plot)
+```
+
+## Using ggplot2 and LaTeX
+
+
+```{=tex}
+\begin{figure}[ht]
+            \begin{center}
+                  
+```
+```{r echo= F}
+
+library(ggplot2)
+data("ChickWeight")
+#View(ChickWeight)
+
+# Create plot
+
+plot <- ggplot(data = ChickWeight, aes(x = Time, y = weight)) + 
+  geom_point() + 
+   theme_bw(base_size = 15)
+
+print(plot)
+```
+
+```{=tex}
+\end{center}
+
+\caption{An Example Figure using R in LaTeX}
+
+{\scriptsize} 
+\label{ChickweightleLaTeXFigure} 
+\end{figure} ```
+```
